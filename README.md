@@ -1,4 +1,4 @@
-## Se non sei arrivato qua dalla repo rocket-chip ecco le istruzioni per buildare questa repo:
+## Se non sei arrivato qua dalla repo riscv-CCFI/rocket-chip ecco le istruzioni per buildare questa repo:
 clona la repo ed esegui il comando
 ```
 $ bash script.sh

@@ -1,3 +1,8 @@
+Se non sei arrivato qua dalla repo rocket-chip ecco le istruzioni per buildare questa repo:
+clona la repo ed esegui il comando
+    $ bash script.sh
+In automatico lo script farà l'inizializzazione dei submodule e applicherà le patch che permetteranno di ottenere il compilatore modificato RetTag
+
 RISC-V GNU Compiler Toolchain
 =============================
 

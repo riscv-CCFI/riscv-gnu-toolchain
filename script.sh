@@ -11,4 +11,4 @@ cd ..
 mkdir ToolInstallationZone
 export ABSOLUTEPATH=$(pwd)
 ./configure --prefix=$ABSOLUTEPATH/ToolInstallationZone
-make
+make -j $(nproc)

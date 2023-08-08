@@ -1,5 +1,5 @@
 diff --git a/gcc/config/riscv/riscv.cc b/gcc/config/riscv/riscv.cc
-index 4939d99..27cd922 100644
+index 4939d99..e7c7c54 100644
 --- a/gcc/config/riscv/riscv.cc
 +++ b/gcc/config/riscv/riscv.cc
 @@ -123,6 +123,10 @@ struct GTY(())  riscv_frame_info {
@@ -21,7 +21,7 @@ index 4939d99..27cd922 100644
  }
  
  /* Make sure that we're not trying to eliminate to the wrong hard frame
-@@ -4348,6 +4353,62 @@ riscv_expand_prologue (void)
+@@ -4348,6 +4353,66 @@ riscv_expand_prologue (void)
  
    if (cfun->machine->naked_p)
      return;
@@ -33,7 +33,11 @@ index 4939d99..27cd922 100644
 +  /* Sign return address for functions.  */
 +  // printf("riscv64_return_address_signing_enabled!\n");
 +  /* Generate function id. */
-+  srand((unsigned)time(NULL));
++  static int srandFatto=0;
++  if(srandFatto==0){
++  		srand((unsigned)time(NULL));
++  		srandFatto=1;
++  		}
 +  function_id = rand();
 +  cfun->func_id = function_id;
 +
@@ -84,7 +88,7 @@ index 4939d99..27cd922 100644
  
    /* When optimizing for size, call a subroutine to save the registers.  */
    if (riscv_use_save_libcall (frame))
-@@ -4467,12 +4528,13 @@ riscv_expand_epilogue (int style)
+@@ -4467,12 +4532,13 @@ riscv_expand_epilogue (int style)
  
        return;
      }
@@ -99,7 +103,7 @@ index 4939d99..27cd922 100644
  
    /* Reset the epilogue cfa info before starting to emit the epilogue.  */
    epilogue_cfa_sp_offset = 0;
-@@ -4580,6 +4642,51 @@ riscv_expand_epilogue (int style)
+@@ -4580,6 +4646,51 @@ riscv_expand_epilogue (int style)
        REG_NOTES (insn) = dwarf;
      }
  
